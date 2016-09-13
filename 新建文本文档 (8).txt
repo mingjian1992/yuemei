@@ -1,0 +1,13 @@
+URL中的字符只能是ASCII字符，但是ASCII字符比较少，而URL则常常包含ASCII字符集以外的字符，如非英语字符、汉字、特殊符号等等，所以要对URL进行转换。这个过程就叫做URL编码，或者叫URL转义，实质上就是将包含非ASCII字符的URL转换为有效的ASCII字符格式。
+
+在进行URL编码时，每一个非ASCII字符都被替换为“%hh”格式，其中hh为两位十六进制数，它对应于该字符在ISO-8859-1字符集里的编码值。比如“中国”这两个汉字出现在URL，就要将他们转为“%D6%D0%B9%FA”，由于一个汉字需要两个字节，所以“中国”被替换成了四个ASCII字符。
+
+
+
+
+
+在java web project中的配置文件读取
+          如果我们把配置文件定义在了classpath路径下。也就是WEB-INF\classes路径下，那么就可以像读取java project中的配置文件那样读取了。
+          如果我们把配置文件定义在了WEB-INF的直接目录下。而不是classes目录下，那么是classpath之外的路径了，通过上面的那种方式是读取不到了。这是在应用环境下，要用到ServletContext，
+   ServletActionContext.getServletContext().getResource("/")可以定位到当前web应用目录 如：jndi:/server/TEST/  TEST为当前的web应用系统名。getResource(String filepath) 注意其中filepath必须以“/”开始。
+   ServletActionContext.getServletContext().getResourceAsStream("/WEB-INF/config/login.conf")；就可以得到/WEB-INF/config/login.conf文件的输入流了。
