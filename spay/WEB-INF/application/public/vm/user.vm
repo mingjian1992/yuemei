@@ -1,0 +1,11 @@
+
+A: what's your name?
+B: $name
+
+A: what's your birthday?
+B: $birthday
+
+A: what's your email address?
+B: $email
+
+A: good!
